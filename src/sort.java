@@ -174,8 +174,7 @@ public class sort {
                         state = T[state][ch];
                     }
 
-                    //System.out.println(tempchar+"   "+COLUMNNUM);
-                    //System.out.print(state);
+
                     //判断是标示符
                     if (stable[state] == "INID"){
                         if (map.containsKey(sb.toString())) {
