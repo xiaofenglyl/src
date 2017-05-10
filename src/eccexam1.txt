@@ -1,0 +1,12 @@
+program  pp
+var  integer  A,B,C,D,E,F,G;
+    
+begin
+  F:=1;
+  A:=B*C+C*B;
+  D:=B;
+  E:=D*C+B*C;
+  B:=F;
+  G:=B*C+B*C
+
+end.
