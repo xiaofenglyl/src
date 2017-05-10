@@ -11,12 +11,11 @@ public class sort {
     /* INNUM 数字状态; INID 标识符状态; END 完成状态;                   */
     /* INCHAR 字符状态;INCOMMENT 注释状态;    FUHAO 单分解符状态; DENGHAO 等号状态;                            */
     /* ERROR 出错状态;                                                   */
-    static String[] stable = { "ZERO","ONE","INID","THREE","INNUM","FIVE","FUHAO","SEVEN","DENGHAO","NINE",
+    private static String[] stable = { "ZERO","ONE","INID","THREE","INNUM","FIVE","FUHAO","SEVEN","DENGHAO","NINE",
             "INASSIGN","ERROR","TWELVE","INRANGE","END","FIFTEEN","SIXTEEN","INCHAR" };
-    static char[] singledelimiter = {'+','-','*','/','(',')',',',';','[',']','<'};
-    static int[] statelist = {0,1,2,3,4,5,6,7,8,9,10,11,12};
-    //static int T [][] = {{1,3,5},{1,1,2},{0,0,0},{4,3,4},{0,0,0},{0,0,0}};
-    static int T[][] = {{1,3,5,7,9,12,15,11},
+    private static char[] singledelimiter = {'+','-','*','/','(',')',',',';','[',']','<'};
+    private static int[] statelist = {0,1,2,3,4,5,6,7,8,9,10,11,12};
+    private static int T[][] = {{1,3,5,7,9,12,15,11},
             {1,1,2,2,2,2,2,2},
             {0,0,0,0,0,0,0,0},
             {4,3,4,4,4,4,4,4},
