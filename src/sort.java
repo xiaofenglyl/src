@@ -8,8 +8,9 @@ import java.util.*;
 
 public class sort {
     /* START 开始状态; INASSIGN 赋值状态; INRANGE 下标范围状态;          */
-    /* INNUM 数字状态; INID 标识符状态; DONE 完成状态;                   */
-    /* INCHAR 字符状态;INCOMMENT 注释状态;                               */
+    /* INNUM 数字状态; INID 标识符状态; END 完成状态;                   */
+    /* INCHAR 字符状态;INCOMMENT 注释状态;    FUHAO 单分解符状态; DENGHAO 等号状态;                            */
+    /* ERROR 出错状态;                                                   */
     static String[] stable = { "ZERO","ONE","INID","THREE","INNUM","FIVE","FUHAO","SEVEN","DENGHAO","NINE",
             "INASSIGN","ERROR","TWELVE","INRANGE","END","FIFTEEN","SIXTEEN","INCHAR" };
     static char[] singledelimiter = {'+','-','*','/','(',')',',',';','[',']','<'};
