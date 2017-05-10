@@ -33,7 +33,7 @@ public class sort {
             {16,16,11,11,11,11,11,11},
             {11,11,11,11,11,11,17,11},
             {0,0,0,0,0,0,0,0}};
-    HashMap<String,Integer> rw = new HashMap<String,Integer>();
+    //HashMap<String,Integer> rw = new HashMap<String,Integer>();
     static String[] rwtable = {"program","type","var","procedure","begin","end","array","of","record","if","then","else",
             "fi","while","do","endwh","read","write","return","integer","char"};
 
@@ -77,11 +77,9 @@ public class sort {
     public static LinkedList<String> readFileByChars(String fileName) {
         LinkedList<String> list = new LinkedList<>();
 
-        HashMap<String , Integer> map = new HashMap<String , Integer>();
-        int i = 0;
+        HashSet<String> rwset = new HashSet<String>();
         for(String rw : rwtable) {
-            map.put(rw,i);
-            i++;
+            rwset.add(rw);
         }
         HashSet<Character> set = new HashSet<Character>();
         for(Character ct : singledelimiter) {
@@ -177,7 +175,7 @@ public class sort {
 
                     //判断是标示符
                     if (stable[state] == "INID"){
-                        if (map.containsKey(sb.toString())) {
+                        if (rwset.contains(sb.toString())) {
                             list.add(String.valueOf(COLUMNNUM));
                             list.add(sb.toString());
                             list.add(" ");                            //list.add("RESERVED WORD");
