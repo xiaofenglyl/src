@@ -18,7 +18,6 @@ begin
       i:=0;
       k:=k+1
    endwh;
-   ll....ll
    array [1..10]
    write(m)
  end.

@@ -177,12 +177,12 @@ public class sort {
                     if (stable[state] == "INID"){
                         if (rwset.contains(sb.toString())) {
                             list.add(String.valueOf(COLUMNNUM));
-                            list.add(sb.toString());
+                            list.add(sb.toString().toUpperCase());
                             list.add("ε");                            //list.add("RESERVED WORD");
                         }
                         else {
                             list.add(String.valueOf(COLUMNNUM));
-                            list.add("id");
+                            list.add("ID");
                             System.out.println(sb.toString());
                             list.add(sb.toString());
                         }
@@ -196,7 +196,7 @@ public class sort {
                     //判断是数字
                     else if (stable[state] == "INNUM") {
                         list.add(String.valueOf(COLUMNNUM));
-                        list.add("num");
+                        list.add("NUM");
                         list.add(sb.toString());
                         sb = new StringBuilder();
                         state = 0;
@@ -210,7 +210,7 @@ public class sort {
                         sb = new StringBuilder();
                         state = 0;
                         list.add(String.valueOf(COLUMNNUM));
-                        list.add("inassign");
+                        list.add(":=");
                         list.add("ε");
                         continue;
                     }
@@ -219,7 +219,7 @@ public class sort {
                        //System.out.print(stable[state] + " : ");
                         state = 0;
                         list.add(String.valueOf(COLUMNNUM));
-                        list.add("eq");
+                        list.add("=");
                         list.add("ε");
                         if(isSave){
                             state = T[state][ch];
@@ -232,7 +232,7 @@ public class sort {
                         sb = new StringBuilder();
                         state = 0;
                         list.add(String.valueOf(COLUMNNUM));
-                        list.add("inrange");
+                        list.add("..");
                         list.add("ε");
                         continue;
                     }
@@ -241,7 +241,7 @@ public class sort {
                         sb = new StringBuilder();
                         state = 0;
                         list.add(String.valueOf(COLUMNNUM));
-                        list.add("inchar");
+                        list.add("'");
                         list.add("ε");
                         continue;
                     }
@@ -251,7 +251,7 @@ public class sort {
                             sb = new StringBuilder();
                             state = 0;
                             list.add(String.valueOf(COLUMNNUM));
-                            list.add("error");
+                            list.add("ERROR");
                             list.add("ε");
                             if(isSave){
                                 state = T[state][ch];
@@ -283,7 +283,7 @@ public class sort {
                     else if (stable[state] == "END")         //结束
                     {
                         list.add(String.valueOf(COLUMNNUM));
-                        list.add("endfile");
+                        list.add("ENDFILE");
                         list.add("ε");
                         break;
 
