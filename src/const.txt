@@ -26,10 +26,7 @@ begin
    if  v2 < 3*(4+5)
    then   v2:= v2+1
    else 
-	write(o1)	 	 
+   write(o1)
    fi
-   ll....11
-   'a'a   1
-  '111a' '111a'=1  'a''  'a''a':=
 end.
 

@@ -178,7 +178,7 @@ public class sort {
                         if (rwset.contains(sb.toString())) {
                             list.add(String.valueOf(COLUMNNUM));
                             list.add(sb.toString());
-                            list.add(" ");                            //list.add("RESERVED WORD");
+                            list.add("ε");                            //list.add("RESERVED WORD");
                         }
                         else {
                             list.add(String.valueOf(COLUMNNUM));
@@ -211,7 +211,7 @@ public class sort {
                         state = 0;
                         list.add(String.valueOf(COLUMNNUM));
                         list.add("inassign");
-                        list.add(" ");
+                        list.add("ε");
                         continue;
                     }
                     else if (stable[state] == "DENGHAO")         //等号
@@ -220,7 +220,7 @@ public class sort {
                         state = 0;
                         list.add(String.valueOf(COLUMNNUM));
                         list.add("eq");
-                        list.add(" ");
+                        list.add("ε");
                         if(isSave){
                             state = T[state][ch];
                         }
@@ -233,7 +233,7 @@ public class sort {
                         state = 0;
                         list.add(String.valueOf(COLUMNNUM));
                         list.add("inrange");
-                        list.add(" ");
+                        list.add("ε");
                         continue;
                     }
                     else if (stable[state] == "INCHAR")         //字符
@@ -242,7 +242,7 @@ public class sort {
                         state = 0;
                         list.add(String.valueOf(COLUMNNUM));
                         list.add("inchar");
-                        list.add(" ");
+                        list.add("ε");
                         continue;
                     }
                     else if (stable[state] == "ERROR")         //错误
@@ -252,7 +252,7 @@ public class sort {
                             state = 0;
                             list.add(String.valueOf(COLUMNNUM));
                             list.add("error");
-                            list.add(" ");
+                            list.add("ε");
                             if(isSave){
                                 state = T[state][ch];
                             }
@@ -264,8 +264,9 @@ public class sort {
                     else if (stable[state] == "FUHAO")         //字符
                     {
                         list.add(String.valueOf(COLUMNNUM));
-                        list.add(singleDivide(sb.toString()));
-                        list.add(" ");
+                        //list.add(singleDivide(sb.toString()));
+                        list.add(sb.toString());
+                        list.add("ε");
                         sb = new StringBuilder();
                         state = 0;
 
@@ -283,7 +284,7 @@ public class sort {
                     {
                         list.add(String.valueOf(COLUMNNUM));
                         list.add("endfile");
-                        list.add(" ");
+                        list.add("ε");
                         break;
 
                     }
@@ -310,15 +311,15 @@ public class sort {
      */
     public static void main(String[] args) {
         LinkedList<String> list = new LinkedList<>();
-        list = readFileByChars("D:\\Users\\asus\\IdeaProjects\\jd\\src\\const.txt");
+        list = readFileByChars("D:\\Users\\asus\\IdeaProjects\\jd\\src\\loop1.txt");
         //List<String> list = new ArrayList<Integer>();
         Iterator<String> iterator = list.iterator();
         File writename = new File("D:\\Users\\asus\\IdeaProjects\\jd\\src\\output.txt");
         try {
             BufferedWriter out = new BufferedWriter(new FileWriter(writename));
             while (iterator.hasNext()) {
-                out.write(iterator.next()+",");
-                out.write(iterator.next()+",");
+                out.write(iterator.next()+" ");
+                out.write(iterator.next()+" ");
                 out.write(iterator.next()+"\r");
             }
             out.flush(); // 把缓存区内容压入文件
