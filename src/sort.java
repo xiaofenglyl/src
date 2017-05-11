@@ -256,7 +256,7 @@ public class sort {
                             if(isSave){
                                 state = T[state][ch];
                             }
-                            continue;
+                            //continue;
                         }
                         sb = new StringBuilder();
                     }
