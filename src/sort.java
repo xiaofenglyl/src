@@ -196,7 +196,7 @@ public class sort {
                     //判断是数字
                     else if (stable[state] == "INNUM") {
                         list.add(String.valueOf(COLUMNNUM));
-                        list.add("NUM");
+                        list.add("INIC");
                         list.add(sb.toString());
                         sb = new StringBuilder();
                         state = 0;
@@ -216,7 +216,7 @@ public class sort {
                     }
                     else if (stable[state] == "DENGHAO")         //等号
                     {
-                       //System.out.print(stable[state] + " : ");
+                        //System.out.print(stable[state] + " : ");
                         state = 0;
                         list.add(String.valueOf(COLUMNNUM));
                         list.add("=");
@@ -283,9 +283,9 @@ public class sort {
                     else if (stable[state] == "END")         //结束
                     {
                         list.add(String.valueOf(COLUMNNUM));
-                        list.add("ENDFILE");
+                        list.add(".");
                         list.add("ε");
-                        break;
+                        //break;
 
                     }
                     //如果当前空格状态清零
@@ -294,11 +294,14 @@ public class sort {
                     }
                     if (T[state][ch] != 0) {
                         if (((char) tempchar) != '\n' && (char) tempchar != '\r' && (char) tempchar != ' ') {
-                                sb.append((char) tempchar);
+                            sb.append((char) tempchar);
                         }
                     }
                 }
             }
+            list.add(String.valueOf(COLUMNNUM - 1));
+            list.add("EOF");
+            list.add("ε");
             reader.close();
         } catch (Exception e) {
             e.printStackTrace();
