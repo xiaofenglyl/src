@@ -95,7 +95,8 @@ public class sort {
             int tempchar;
             StringBuilder sb = new StringBuilder();
             boolean save = true;
-            while ((tempchar = reader.read()) != -1) {
+            while (true) {
+                tempchar = reader.read();
 
                 //去除掉注释部分 不进行存储
                 if(((char) tempchar) == '{') {
@@ -112,7 +113,7 @@ public class sort {
 
                 //存储部分
                 if(save) {
-                    boolean isSave =false;
+                    boolean isSave = false;
 
                     int ch = 0;
                     //判断是字符状态
@@ -247,6 +248,8 @@ public class sort {
                     }
                     else if (stable[state] == "ERROR")         //错误
                     {
+                        if(tempchar == -1)
+                            break;
                         if((char) tempchar != ' ' && (char) tempchar != '\n' && (char) tempchar != '\r') {
                             sb = new StringBuilder();
                             state = 0;
@@ -256,8 +259,9 @@ public class sort {
                             if(isSave){
                                 state = T[state][ch];
                             }
-                            //continue;
+                            continue;
                         }
+
                         sb = new StringBuilder();
                     }
 
@@ -285,6 +289,11 @@ public class sort {
                         list.add(String.valueOf(COLUMNNUM));
                         list.add(".");
                         list.add("ε");
+                        sb = new StringBuilder();
+                        state = 0;
+                        if(isSave){
+                            state = T[state][ch];
+                        }
                         //break;
 
                     }
@@ -299,7 +308,7 @@ public class sort {
                     }
                 }
             }
-            list.add(String.valueOf(COLUMNNUM - 1));
+            list.add(String.valueOf(COLUMNNUM));
             list.add("EOF");
             list.add("ε");
             reader.close();
@@ -314,7 +323,7 @@ public class sort {
      */
     public static void main(String[] args) {
         LinkedList<String> list = new LinkedList<>();
-        list = readFileByChars("D:\\Users\\asus\\IdeaProjects\\jd\\src\\loop1.txt");
+        list = readFileByChars("D:\\Users\\asus\\IdeaProjects\\jd\\src\\c5.txt");
         //List<String> list = new ArrayList<Integer>();
         Iterator<String> iterator = list.iterator();
         File writename = new File("D:\\Users\\asus\\IdeaProjects\\jd\\src\\output.txt");
