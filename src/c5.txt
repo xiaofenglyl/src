@@ -36,5 +36,5 @@ begin
    sd(a,c);
    d.z:=c;
    b:=d.z;
-   sss(b)
+    sss(b)
 end.

@@ -250,7 +250,8 @@ public class sort {
                     {
                         if(tempchar == -1)
                             break;
-                        if((char) tempchar != ' ' && (char) tempchar != '\n' && (char) tempchar != '\r') {
+                        if((char) tempchar != ' ' && (char) tempchar != '\n' && (char) tempchar != '\r'
+                                && (char) tempchar != '\t' && (char) tempchar != '\b' ) {
                             sb = new StringBuilder();
                             state = 0;
                             list.add(String.valueOf(COLUMNNUM));
@@ -302,7 +303,8 @@ public class sort {
                         state = 0;
                     }
                     if (T[state][ch] != 0) {
-                        if (((char) tempchar) != '\n' && (char) tempchar != '\r' && (char) tempchar != ' ') {
+                        if (((char) tempchar) != '\n' && (char) tempchar != '\r' && (char) tempchar != ' '
+                                && (char) tempchar != '\t' && (char) tempchar != '\b' ) {
                             sb.append((char) tempchar);
                         }
                     }
