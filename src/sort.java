@@ -90,6 +90,7 @@ public class sort {
         int  state = 0;
         Reader reader = null;
         int COLUMNNUM = 0;
+        int LINE = 0;
         try {
             reader = new InputStreamReader(new FileInputStream(file));
             int tempchar;
@@ -97,7 +98,7 @@ public class sort {
             boolean save = true;
             while (true) {
                 tempchar = reader.read();
-
+                LINE++;
                 //去除掉注释部分 不进行存储
                 if(((char) tempchar) == '{') {
                     save = false;
@@ -132,6 +133,7 @@ public class sort {
                     //回车
                     else if (((char) tempchar) == '\n') {
                         COLUMNNUM++;
+                        LINE = 0;
                         state = 0;
                     }
                     //判断是单分界符
@@ -177,12 +179,12 @@ public class sort {
                     //判断是标示符
                     if (stable[state] == "INID"){
                         if (rwset.contains(sb.toString())) {
-                            list.add(String.valueOf(COLUMNNUM));
+                            list.add(String.valueOf(COLUMNNUM) + "." + String.valueOf(LINE));
                             list.add(sb.toString().toUpperCase());
                             list.add("ε");                            //list.add("RESERVED WORD");
                         }
                         else {
-                            list.add(String.valueOf(COLUMNNUM));
+                            list.add(String.valueOf(COLUMNNUM) + "." + String.valueOf(LINE));
                             list.add("ID");
                             System.out.println(sb.toString());
                             list.add(sb.toString());
@@ -196,7 +198,7 @@ public class sort {
                     }
                     //判断是数字
                     else if (stable[state] == "INNUM") {
-                        list.add(String.valueOf(COLUMNNUM));
+                        list.add(String.valueOf(COLUMNNUM) + "." + String.valueOf(LINE));
                         list.add("INIC");
                         list.add(sb.toString());
                         sb = new StringBuilder();
@@ -210,7 +212,7 @@ public class sort {
                     {
                         sb = new StringBuilder();
                         state = 0;
-                        list.add(String.valueOf(COLUMNNUM));
+                        list.add(String.valueOf(COLUMNNUM) + "." + String.valueOf(LINE));
                         list.add(":=");
                         list.add("ε");
                         continue;
@@ -219,7 +221,7 @@ public class sort {
                     {
                         //System.out.print(stable[state] + " : ");
                         state = 0;
-                        list.add(String.valueOf(COLUMNNUM));
+                        list.add(String.valueOf(COLUMNNUM) + "." + String.valueOf(LINE));
                         list.add("=");
                         list.add("ε");
                         if(isSave){
@@ -232,7 +234,7 @@ public class sort {
                     {
                         sb = new StringBuilder();
                         state = 0;
-                        list.add(String.valueOf(COLUMNNUM));
+                        list.add(String.valueOf(COLUMNNUM) + "." + String.valueOf(LINE));
                         list.add("..");
                         list.add("ε");
                         continue;
@@ -241,7 +243,7 @@ public class sort {
                     {
                         sb = new StringBuilder();
                         state = 0;
-                        list.add(String.valueOf(COLUMNNUM));
+                        list.add(String.valueOf(COLUMNNUM) + "." + String.valueOf(LINE));
                         list.add("'");
                         list.add("ε");
                         continue;
@@ -254,7 +256,7 @@ public class sort {
                                 && (char) tempchar != '\t' && (char) tempchar != '\b' ) {
                             sb = new StringBuilder();
                             state = 0;
-                            list.add(String.valueOf(COLUMNNUM));
+                            list.add(String.valueOf(COLUMNNUM) + "." + String.valueOf(LINE));
                             list.add("ERROR");
                             list.add("ε");
                             if(isSave){
@@ -268,7 +270,7 @@ public class sort {
 
                     else if (stable[state] == "FUHAO")         //字符
                     {
-                        list.add(String.valueOf(COLUMNNUM));
+                        list.add(String.valueOf(COLUMNNUM) + "." + String.valueOf(LINE));
                         //list.add(singleDivide(sb.toString()));
                         list.add(sb.toString());
                         list.add("ε");
@@ -287,7 +289,7 @@ public class sort {
 
                     else if (stable[state] == "END")         //结束
                     {
-                        list.add(String.valueOf(COLUMNNUM));
+                        list.add(String.valueOf(COLUMNNUM) + "." + String.valueOf(LINE));
                         list.add(".");
                         list.add("ε");
                         sb = new StringBuilder();
@@ -325,7 +327,7 @@ public class sort {
      */
     public static void main(String[] args) {
         LinkedList<String> list = new LinkedList<>();
-        list = readFileByChars("D:\\Users\\asus\\IdeaProjects\\jd\\src\\c5.txt");
+        list = readFileByChars("D:\\Users\\asus\\IdeaProjects\\jd\\src\\scan.txt");
         //List<String> list = new ArrayList<Integer>();
         Iterator<String> iterator = list.iterator();
         File writename = new File("D:\\Users\\asus\\IdeaProjects\\jd\\src\\output.txt");
